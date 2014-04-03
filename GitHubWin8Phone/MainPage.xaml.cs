@@ -32,28 +32,12 @@ namespace GitHubWin8Phone
 
         private void test()
         {
-            Credentials credential = new Credentials("GitHubWin8Tester", "hearc2014");
-            InMemoryCredentialStore inMemoryCredentialStore = new InMemoryCredentialStore(credential);
-
-            var github = new GitHubClient(new ProductHeaderValue("GitHubWin8"), inMemoryCredentialStore);
-            //var user = await github.User.Get("davidkuhner");
+            GitHubClient github = App.GitHubClient;
 
             NewRepository nr = new NewRepository();
             nr.Name = "APItest";
             //github.Repository.Create(nr);
             MessageBox.Show("Created");
-
-            /*MessageBox.Show("Befor getting task");
-            Task<Repository> task = github.Repository.Get("davidkuhner", "GitHubWin8");
-            MessageBox.Show("Waiting on task");
-            MessageBox.Show("Task ready");
-            Repository repo = task.;
-
-            MessageBox.Show("Result ready");
-
-            MessageBox.Show("hello");//repo.Description);
-            MessageBox.Show("END");*/
-            //Console.WriteLine(user.Followers + " folks love the half ogre!");
         }
 
         // Load data for the ViewModel Items

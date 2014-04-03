@@ -14,6 +14,29 @@ namespace GitHubWin8Phone
     public partial class App : Application
     {
         private static MainViewModel viewModel = null;
+        private static Octokit.GitHubClient gitHubClient = null;
+
+        /// <summary>
+        /// The user credentials used in the whole application
+        /// </summary>
+        public static Octokit.GitHubClient GitHubClient 
+        { 
+            get
+            {
+                if(gitHubClient == null)
+                {
+                    Octokit.Credentials credential = new Octokit.Credentials("GitHubWin8Tester", "hearc2014");
+                    Octokit.Internal.InMemoryCredentialStore inMemoryCredentialStore = new Octokit.Internal.InMemoryCredentialStore(credential);
+
+                    gitHubClient = new Octokit.GitHubClient(new Octokit.ProductHeaderValue("GitHubWin8"), inMemoryCredentialStore);
+                }
+                return gitHubClient;
+            }
+            set
+            {
+                gitHubClient = value;
+            }
+        }
 
         /// <summary>
         /// A static ViewModel used by the views to bind against.
