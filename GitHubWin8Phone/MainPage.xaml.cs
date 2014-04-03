@@ -43,6 +43,7 @@ namespace GitHubWin8Phone
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.RepositoriesViewModel.LoadData();
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();

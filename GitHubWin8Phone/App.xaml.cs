@@ -14,6 +14,7 @@ namespace GitHubWin8Phone
     public partial class App : Application
     {
         private static MainViewModel viewModel = null;
+        private static RepositoriesViewModel repositoriesViewModel = null;
         private static Octokit.GitHubClient gitHubClient = null;
 
         /// <summary>
@@ -51,6 +52,22 @@ namespace GitHubWin8Phone
                     viewModel = new MainViewModel();
 
                 return viewModel;
+            }
+        }
+
+        /// <summary>
+        /// A static ViewModel used by the views to bind against.
+        /// </summary>
+        /// <returns>The RepositoriesViewModel object.</returns>
+        public static RepositoriesViewModel RepositoriesViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                if (repositoriesViewModel == null)
+                    repositoriesViewModel = new RepositoriesViewModel();
+
+                return repositoriesViewModel;
             }
         }
 

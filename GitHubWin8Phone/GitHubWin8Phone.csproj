@@ -110,6 +110,7 @@
       <DependentUpon>TabRepositoriesList.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="ViewModels\RepositoriesViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

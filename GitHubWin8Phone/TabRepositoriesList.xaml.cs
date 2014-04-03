@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using GitHubWin8Phone.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace GitHubWin8Phone
 {
@@ -15,6 +17,16 @@ namespace GitHubWin8Phone
         public TabRepositoriesList()
         {
             InitializeComponent();
+
+            // Set the data context of the listbox control to the sample data
+            DataContext = App.RepositoriesViewModel;
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            //App.RepositoriesViewModel.LoadData();
+        }
+        
+       
     }
 }
