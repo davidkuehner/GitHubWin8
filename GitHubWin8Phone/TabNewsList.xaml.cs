@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using GitHubWin8Phone.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace GitHubWin8Phone
 {
@@ -15,6 +17,13 @@ namespace GitHubWin8Phone
         public TabNewsList()
         {
             InitializeComponent();
+
+            DataContext = App.NewsViewModel;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.NewsViewModel.LoadData();
         }
     }
 }

@@ -25,6 +25,7 @@ namespace GitHubWin8Phone
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Repo loaded");
+
             App.RepositoriesViewModel.LoadData();
         }
         
