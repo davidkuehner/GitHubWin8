@@ -60,18 +60,21 @@ namespace GitHubWin8Phone.ViewModels
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         /// </summary>
-        public void LoadData()
+        public async void LoadData()
         {
-            this.Items.Clear();
-
-            Task<IReadOnlyList<Octokit.Repository>> repositories = App.GitHubClient.Repository.GetAllForCurrent();
-
-            foreach(Octokit.Repository repo in repositories.Result)
+            if (!IsDataLoaded)
             {
-                this.Items.Add(new ItemViewModel() { LineOne = repo.Name, LineTwo = repo.Description, LineThree = repo.GitUrl });
-            }
+                this.Items.Clear();
 
-            this.IsDataLoaded = true;
+                IReadOnlyList<Octokit.Repository> repositories = await App.GitHubClient.Repository.GetAllForCurrent();
+
+                foreach (Octokit.Repository repo in repositories)
+                {
+                    this.Items.Add(new ItemViewModel() { LineOne = repo.Name, LineTwo = repo.Description, LineThree = repo.GitUrl });
+                }
+
+                this.IsDataLoaded = true;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

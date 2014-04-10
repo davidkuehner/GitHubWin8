@@ -22,28 +22,15 @@ namespace GitHubWin8Phone
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
-
-            this.test();
+            DataContext = App.ViewModel;            
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
-        }
-
-        private void test()
-        {
-            GitHubClient github = App.GitHubClient;
-
-            NewRepository nr = new NewRepository();
-            nr.Name = "APItest";
-            //github.Repository.Create(nr);
-            MessageBox.Show("Created");
-        }
+        }    
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            App.RepositoriesViewModel.LoadData();
+        {                        
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();
