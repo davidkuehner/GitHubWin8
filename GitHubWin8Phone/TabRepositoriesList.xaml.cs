@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using GitHubWin8Phone.ViewModels;
 using System.Collections.ObjectModel;
+using Octokit;
 
 namespace GitHubWin8Phone
 {
@@ -24,10 +25,24 @@ namespace GitHubWin8Phone
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Repo loaded");
-
+            DataContext = App.RepositoriesViewModel;
             App.RepositoriesViewModel.LoadData();
+        }       
+
+        private void llsRepositories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(llsRepositories.SelectedItem != null)
+            {
+                var repoItem = llsRepositories.SelectedItem as RepositoryItemViewModel;
+
+                PhoneApplicationService.Current.State["repository"] = repoItem.Repository;
+
+                var frame = App.Current.RootVisual as PhoneApplicationFrame;
+                frame.Navigate(new Uri("/ViewRepositoryPage.xaml", UriKind.Relative));                
+            }
+            llsRepositories.SelectedItem = null;
         }
+        
         
        
     }

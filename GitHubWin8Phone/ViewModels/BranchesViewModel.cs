@@ -4,39 +4,35 @@ using System.ComponentModel;
 using GitHubWin8Phone.Resources;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Octokit;
+using System.Windows;
 
 namespace GitHubWin8Phone.ViewModels
 {
-    public class RepositoriesViewModel : INotifyPropertyChanged
+    public class BranchesViewModel : INotifyPropertyChanged
     {
-        public RepositoriesViewModel()
+        public BranchesViewModel(Repository repository)
         {
-            this.Items = new ObservableCollection<RepositoryItemViewModel>();
+            this.Repository = repository;
+            this.Items = new ObservableCollection<BranchItemViewModel>();
         }
 
         /// <summary>
         /// A collection for ItemViewModel objects.
         /// </summary>
-        public ObservableCollection<RepositoryItemViewModel> Items { get; private set; }
+        public ObservableCollection<BranchItemViewModel> Items { get; private set; }
 
-        private string _sampleProperty = "Sample Runtime Property Value";
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding
-        /// </summary>
-        /// <returns></returns>
-        public string SampleProperty
+        private Repository repository;
+        public Repository Repository
         {
             get
             {
-                return _sampleProperty;
+                return repository;
             }
             set
             {
-                if (value != _sampleProperty)
-                {
-                    _sampleProperty = value;
-                    NotifyPropertyChanged("SampleProperty");
-                }
+                repository = value;
+                NotifyPropertyChanged("Repository");
             }
         }
 
@@ -65,15 +61,15 @@ namespace GitHubWin8Phone.ViewModels
             if (!IsDataLoaded)
             {
                 this.Items.Clear();
+                   
+                IReadOnlyList<Octokit.Branch> branches = await App.GitHubClient.Repository.GetAllBranches(repository.Owner.Login, repository.Name);                
 
-                IReadOnlyList<Octokit.Repository> repositories = await App.GitHubClient.Repository.GetAllForCurrent();
+                foreach (Octokit.Branch branch in branches)
+                {                    
+                    this.Items.Add(new BranchItemViewModel(branch));
+                }                
 
-                foreach (Octokit.Repository repo in repositories)
-                {
-                    this.Items.Add(new RepositoryItemViewModel(repo));
-                }
-
-                this.IsDataLoaded = true;
+                this.IsDataLoaded = true;                                                                  
             }
         }
 

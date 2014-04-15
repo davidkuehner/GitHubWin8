@@ -103,16 +103,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TabBranchesList.xaml.cs">
+      <DependentUpon>TabBranchesList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabNewsList.xaml.cs">
       <DependentUpon>TabNewsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="TabRepositoriesList.xaml.cs">
       <DependentUpon>TabRepositoriesList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\BranchesViewModel.cs" />
+    <Compile Include="ViewModels\BranchItemViewModel.cs" />
+    <Compile Include="ViewModels\RepositoryItemViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\NewsViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewRepositoryPage.xaml.cs">
+      <DependentUpon>ViewRepositoryPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -127,11 +136,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </DesignData>
+    <Page Include="TabBranchesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TabNewsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TabRepositoriesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewRepositoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

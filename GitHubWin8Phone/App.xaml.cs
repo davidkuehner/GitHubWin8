@@ -15,6 +15,7 @@ namespace GitHubWin8Phone
     {
         private static MainViewModel viewModel = null;
         private static RepositoriesViewModel repositoriesViewModel = null;
+        private static BranchesViewModel branchesViewModel = null; //for current repo
         private static NewsViewModel newsViewModel = null;
         private static Octokit.GitHubClient gitHubClient = null;
 
@@ -69,6 +70,22 @@ namespace GitHubWin8Phone
                     repositoriesViewModel = new RepositoriesViewModel();
 
                 return repositoriesViewModel;
+            }
+        }
+
+        /// <summary>
+        /// A static ViewModel used by the views to bind against.
+        /// </summary>
+        /// <returns>The RepositoriesViewModel object.</returns>
+        public static BranchesViewModel BranchesViewModel
+        {
+            get
+            {
+                return branchesViewModel;
+            }
+            set
+            {
+                branchesViewModel = value;
             }
         }
 

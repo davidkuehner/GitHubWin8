@@ -23,16 +23,23 @@ namespace GitHubWin8Phone
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = this;            
-            
+            DataContext = this;
+
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }    
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {                                    
-        }                
+        {                   
+                 
+        }
+
+        private void BtnRefreshAppBar_Click(object sender, EventArgs e)
+        {
+            App.RepositoriesViewModel.ReloadData();
+        }
+        
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
