@@ -11,6 +11,7 @@ using GitHubWin8Phone.Resources;
 using Octokit;
 using Octokit.Internal;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace GitHubWin8Phone
 {
@@ -22,7 +23,7 @@ namespace GitHubWin8Phone
             InitializeComponent();
 
             // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;            
+            DataContext = this;            
             
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
@@ -30,12 +31,8 @@ namespace GitHubWin8Phone
 
         // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {                        
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
-        }
+        {                                    
+        }                
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
