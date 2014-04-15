@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:win8github="clr-namespace:GitHubWin8Phone" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -23,13 +24,21 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0">
             <TextBlock Text="GitHubWin8" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="Repo" Margin="25,0,0,0" Style="{StaticResource PhoneTextTitle2Style}"/>
-            <TextBlock Text="Branch" Margin="25,0,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+            <TextBlock Text="{Binding Commit.Repository.Name}" Margin="25,0,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icon/branch_white_icon.png" Margin="25,0,0,0" Height="40"></Image>
+                <TextBlock Text="{Binding Name}" Margin="25,0,0,0" Style="{StaticResource PhoneTextTitle2Style}"/>
+            </StackPanel>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0">
+            <phone:Pivot Grid.Row="1" x:Name="MainPivot">
+                <!--Pivot item one-->
+                <phone:PivotItem Header="Commits">
+                                     
+                </phone:PivotItem>               
+            </phone:Pivot>
         </Grid>
     </Grid>
 

@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Octokit;
 
 namespace GitHubWin8Phone
 {
@@ -15,6 +16,13 @@ namespace GitHubWin8Phone
         public ViewBranchPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Branch branch = PhoneApplicationService.Current.State["branch"] as Branch;
+
+            this.DataContext = branch;          
         }
     }
 }

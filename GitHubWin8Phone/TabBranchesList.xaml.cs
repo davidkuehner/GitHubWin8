@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using GitHubWin8Phone.ViewModels;
+using Octokit;
 
 namespace GitHubWin8Phone
 {
@@ -19,7 +21,19 @@ namespace GitHubWin8Phone
         }        
 
         private void llsBranches_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
+        {
+            if (llsBranches.SelectedItem != null)
+            {
+                Repository repo = PhoneApplicationService.Current.State["repository"] as Repository;
+                var branchItem = llsBranches.SelectedItem as BranchItemViewModel;
+                branchItem.Branch.Commit.Repository = repo;
+
+                PhoneApplicationService.Current.State["branch"] = branchItem.Branch;
+
+                var frame = App.Current.RootVisual as PhoneApplicationFrame;
+                frame.Navigate(new Uri("/ViewBranchPage.xaml", UriKind.Relative));
+            }
+            llsBranches.SelectedItem = null;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
