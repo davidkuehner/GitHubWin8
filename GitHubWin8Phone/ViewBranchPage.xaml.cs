@@ -20,7 +20,7 @@ namespace GitHubWin8Phone
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Branch branch = PhoneApplicationService.Current.State["branch"] as Branch;
+            Branch branch = PhoneApplicationService.Current.State["branch"] as Branch;                  
 
             this.DataContext = branch;          
         }
