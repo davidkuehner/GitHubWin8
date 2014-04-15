@@ -41,7 +41,7 @@
             CurrentUICulture of the app at run time.
          -->
         <StackPanel Grid.Row="0" >
-            <TextBlock Text="Win8GitHub" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="GitHubWin8" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
 
         <!--Pivot Control-->

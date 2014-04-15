@@ -1,12 +1,11 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="GitHubWin8Phone.ViewRepositoryPage"
+    x:Class="GitHubWin8Phone.ViewBranchPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:win8github="clr-namespace:GitHubWin8Phone" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -22,32 +21,16 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" >
+        <StackPanel Grid.Row="0">
             <TextBlock Text="GitHubWin8" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="{Binding Name}" Margin="20,0, 0, 0" Style="{StaticResource PhoneTextTitle1Style}" />            
+            <TextBlock Text="Repo" Margin="25,0,0,0" Style="{StaticResource PhoneTextTitle2Style}"/>
+            <TextBlock Text="Branch" Margin="25,0,0,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1">
-            <phone:Pivot x:Name="MainPivot">
-                <!--Pivot item one-->
-                <phone:PivotItem Header="Branches">      
-                    <win8github:TabBranchesList />
-                </phone:PivotItem>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 
-                <!--Pivot item two-->
-                <phone:PivotItem Header="Issues">                    
-                </phone:PivotItem>
-
-
-            </phone:Pivot>
         </Grid>
     </Grid>
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/back.png" Text="back" x:Name="BtnBackAppBar" Click="BtnBackAppBar_Click"/>
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" Text="refresh" x:Name="BtnRefreshAppBar" Click="BtnRefreshAppBar_Click"/>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

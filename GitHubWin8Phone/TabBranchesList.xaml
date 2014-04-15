@@ -11,7 +11,7 @@
     d:DesignHeight="480" d:DesignWidth="480" Loaded="UserControl_Loaded">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
-        <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}" x:Name="llsBranches" SelectionChanged="llsBranches_SelectionChanged">
+        <phone:LongListSelector ItemsSource="{Binding Items}" x:Name="llsBranches" SelectionChanged="llsBranches_SelectionChanged">
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="0,0,0,17">

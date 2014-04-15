@@ -112,6 +112,9 @@
     <Compile Include="TabRepositoriesList.xaml.cs">
       <DependentUpon>TabRepositoriesList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewBranchPage.xaml.cs">
+      <DependentUpon>ViewBranchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BranchesViewModel.cs" />
     <Compile Include="ViewModels\BranchItemViewModel.cs" />
     <Compile Include="ViewModels\RepositoryItemViewModel.cs" />
@@ -145,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TabRepositoriesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewBranchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,6 +209,7 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Icon\github_icon.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -217,6 +225,7 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="github_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">
