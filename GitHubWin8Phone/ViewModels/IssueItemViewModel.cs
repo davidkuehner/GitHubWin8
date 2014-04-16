@@ -16,7 +16,7 @@ namespace GitHubWin8Phone.ViewModels
         public IssueItemViewModel(Issue issue)
         {
             this.Issue = issue;
-            this.LineOne = issue.Title;
+            this.LineOne = "#" + issue.Number + " " + issue.Title;
             
             if(issue.Assignee == null )
             {

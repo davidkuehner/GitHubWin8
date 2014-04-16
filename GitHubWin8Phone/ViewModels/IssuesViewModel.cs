@@ -62,21 +62,63 @@ namespace GitHubWin8Phone.ViewModels
                 this.OpenIssues.Clear();
                 this.ClosedIssues.Clear();
 
-                IReadOnlyList<Octokit.Issue> issues = await App.GitHubClient.Issue.GetForRepository(Repository.Owner.Login, Repository.Name);                
-                
-                foreach(Issue issue in issues)
+                //Open issues
+                RepositoryIssueRequest r = new RepositoryIssueRequest();
+                r.State = ItemState.Open;
+
+                IReadOnlyList<Octokit.Issue> issues = await App.GitHubClient.Issue.GetForRepository(Repository.Owner.Login, Repository.Name, r);                
+
+                foreach (Issue issue in issues)
+                {                    
+                    this.OpenIssues.Add(new IssueItemViewModel(issue));                 
+                }
+
+                //Closed issues                
+                r.State = ItemState.Closed;
+
+                issues = await App.GitHubClient.Issue.GetForRepository(Repository.Owner.Login, Repository.Name, r);
+
+                foreach (Issue issue in issues)
                 {
-                    if(issue.State == ItemState.Open)
-                    {
-                        this.OpenIssues.Add(new IssueItemViewModel(issue));
-                    }
-                    else
-                    {
-                        this.ClosedIssues.Add(new IssueItemViewModel(issue));
-                    }
-                }                
+                    this.ClosedIssues.Add(new IssueItemViewModel(issue));
+                }
+
 
                 this.IsDataLoaded = true;
+            }
+        }
+
+        public async Task<bool> CloseIssue(Issue issue)
+        {
+            IssueUpdate update = new IssueUpdate();
+            update.State = ItemState.Closed;
+            Issue result = await App.GitHubClient.Issue.Update(Repository.Owner.Login, Repository.Name, issue.Number, update);
+
+            if(result == null)
+            {
+                return false;
+            }
+            else
+            {
+                ReloadData();
+                return true;
+            }
+        }
+
+        public async Task<bool> ReopenIssue(Issue issue)
+        {
+            IssueUpdate update = new IssueUpdate();
+            update.State = ItemState.Open;
+            Issue result = await App.GitHubClient.Issue.Update(Repository.Owner.Login, Repository.Name, issue.Number, update);
+
+            if (result == null)
+            {
+                return false;
+            }
+            else
+            {
+                ReloadData();
+                return true;
             }
         }
 
