@@ -66,11 +66,15 @@ namespace GitHubWin8Phone.ViewModels
             {
                 this.Items.Clear();
 
-                IReadOnlyList<Octokit.Notification> notifications = await App.GitHubClient.Notification.GetAllForCurrent();
+                IReadOnlyList<Octokit.Activity> activities = await App.GitHubClient.Activity.Events.GetAll();
 
-                foreach (Octokit.Notification notif in notifications)
+                foreach (Octokit.Activity activity in activities)
                 {
-                    this.Items.Add(new ItemViewModel() { LineOne = notif.Subject.Title, LineTwo = notif.Subject.Url, LineThree = notif.Subject.LatestCommentUrl });
+                    Type t = activity.GetType();
+
+                    this.Items.Add(new ItemViewModel() { LineOne = activity. + " : " + activity.Type, LineTwo = activity.Actor.Name, LineThree = activity.CreatedAt.ToString() });
+
+                    //this.Items.Add(new ItemViewModel() { LineOne = activity.CreatedAt.ToString() + " : " + activity.Type, LineTwo = activity.Actor.Name, LineThree = activity.CreatedAt.ToString() });
                 }
 
                 this.IsDataLoaded = true;
