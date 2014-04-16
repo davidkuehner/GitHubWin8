@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Text.RegularExpressions;
 
 namespace GitHubWin8Phone.ViewModels
 {
@@ -15,8 +16,9 @@ namespace GitHubWin8Phone.ViewModels
     {
         public ActivityItemViewModel(Activity activity)
         {
+            
             this.Activity = activity;
-            this.LineOne = activity.Type ;
+            this.LineOne = Regex.Replace(activity.Type.Replace("Event", ""), "(\\B[A-Z])", " $1") + " at " + activity.Repo.Name;
             this.LineTwo = activity.Actor.Login;
             this.LineThree = activity.CreatedAt.DateTime.ToLongDateString() +" at "+ activity.CreatedAt.DateTime.ToLongTimeString();
 
