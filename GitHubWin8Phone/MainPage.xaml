@@ -14,6 +14,15 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+    
+    <phone:PhoneApplicationPage.Resources>
+        <shell:ApplicationBar x:Key="RepositoriesAppBar" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" Text="refresh" x:Name="BtnRefreshRepositoriesAppBar" Click="BtnRefreshRepositoriesAppBar_Click"/>            
+        </shell:ApplicationBar>
+        <shell:ApplicationBar x:Key="NewsAppBar" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" Text="refresh" x:Name="BtnRefreshNewsAppBar" Click="BtnRefreshNewsAppBar_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -45,7 +54,7 @@
         </StackPanel>
 
         <!--Pivot Control-->
-        <phone:Pivot Grid.Row="1" x:Name="MainPivot">
+        <phone:Pivot Grid.Row="1" x:Name="MainPivot" SelectionChanged="MainPivot_SelectionChanged">
             <!--Pivot item one-->
             <phone:PivotItem Header="News">
                 <!--Double line list with text wrapping
@@ -87,15 +96,5 @@
 
             Before shipping remove this XAML and the image itself.-->
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" IsHitTestVisible="False" />-->
-    </Grid>
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" Text="refresh" x:Name="BtnRefreshAppBar" Click="BtnRefreshAppBar_Click"/>            
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
+    </Grid>    
 </phone:PhoneApplicationPage>

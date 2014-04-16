@@ -27,19 +27,39 @@ namespace GitHubWin8Phone
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
-        }    
-
-        // Load data for the ViewModel Items
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {                   
-                 
         }
 
-        private void BtnRefreshAppBar_Click(object sender, EventArgs e)
+        #region Event handlers
+
+        private void MainPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (((Pivot)sender).SelectedIndex)
+            {
+                case 0:
+                    ApplicationBar = (ApplicationBar)this.Resources["NewsAppBar"];
+                    break;
+                case 1:
+                    ApplicationBar = (ApplicationBar)this.Resources["RepositoriesAppBar"];
+                    break;               
+                default:
+                    ApplicationBar = null;
+                    break;
+            }
+        }
+
+        private void BtnRefreshRepositoriesAppBar_Click(object sender, EventArgs e)
         {
             App.RepositoriesViewModel.ReloadData();
         }
-        
+
+        private void BtnRefreshNewsAppBar_Click(object sender, EventArgs e)
+        {
+            //Refresh news here!
+            MessageBox.Show("Still to implement :) ");
+        }
+
+        #endregion
+
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()

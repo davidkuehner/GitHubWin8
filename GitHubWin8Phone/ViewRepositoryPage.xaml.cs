@@ -21,11 +21,6 @@ namespace GitHubWin8Phone
             DataContext = this;
         }
 
-        private void BtnBackAppBar_Click(object sender, EventArgs e)
-        {
-            NavigationService.GoBack();               
-        }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Repository = PhoneApplicationService.Current.State["repository"] as Repository;
@@ -44,15 +39,7 @@ namespace GitHubWin8Phone
         {
             Readme = await App.GitHubClient.Repository.GetReadmeHtml(Repository.Owner.Login, Repository.Name);
             web.NavigateToString(Readme);            
-        }
-        
-        private void BtnRefreshAppBar_Click(object sender, EventArgs e)
-        {
-            if(App.BranchesViewModel != null)
-            {
-                App.BranchesViewModel.ReloadData();
-            }
-        }
+        }                
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
@@ -62,29 +49,90 @@ namespace GitHubWin8Phone
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
+        }               
 
+        #region Properties
         private Repository repository;
-
         public Repository Repository
         {
             get { return repository; }
-            set 
-            { 
+            set
+            {
                 repository = value;
                 NotifyPropertyChanged("Repository");
             }
         }
-        private string readme;
 
+        private string readme;
         public string Readme
         {
             get { return readme; }
-            set 
-            { 
+            set
+            {
                 readme = value;
                 NotifyPropertyChanged("Readme");
             }
         }
+        #endregion
+
+        #region Event handlers
+        private void MainPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (((Pivot)sender).SelectedIndex)
+            {
+                case 0:
+                    ApplicationBar = (ApplicationBar)this.Resources["BranchesAppBar"];
+                    break;
+
+                case 1:
+                    ApplicationBar = (ApplicationBar)this.Resources["IssuesAppBar"];
+                    break;
+                case 2:
+                    ApplicationBar = (ApplicationBar)this.Resources["ReadmeAppBar"];
+                    break;
+                default:
+                    ApplicationBar = null;
+                    break;
+            }
+        }
+
+        private void BtnBackIssuesAppBar_Click(object sender, EventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void BtnRefreshIssuesAppBar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnBackBranchesAppBar_Click(object sender, EventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void BtnRefreshBranchesAppBar_Click(object sender, EventArgs e)
+        {
+            if (App.BranchesViewModel != null)
+            {
+                App.BranchesViewModel.ReloadData();
+            }
+        }
+
+        private void BtnAddIssuesAppBar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnBackReadmeAppBar_Click(object sender, EventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void BtnRefreshReadmeAppBar_Click(object sender, EventArgs e)
+        {
+            LoadReadme();
+        }
+        #endregion
     }
 }

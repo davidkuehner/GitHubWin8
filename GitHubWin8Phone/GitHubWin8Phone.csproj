@@ -104,6 +104,9 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="TabBranchesList.xaml.cs" />
+    <Compile Include="TabCommitsList.xaml.cs">
+      <DependentUpon>TabCommitsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabNewsList.xaml.cs">
       <DependentUpon>TabNewsList.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,8 @@
     <Compile Include="ViewBranchPage.xaml.cs" />
     <Compile Include="ViewModels\BranchesViewModel.cs" />
     <Compile Include="ViewModels\BranchItemViewModel.cs" />
+    <Compile Include="ViewModels\CommitsViewModel.cs" />
+    <Compile Include="ViewModels\CommitItemViewModel.cs" />
     <Compile Include="ViewModels\RepositoryItemViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\NewsViewModel.cs" />
@@ -138,6 +143,10 @@
     <Page Include="TabBranchesList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TabCommitsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TabNewsList.xaml">
       <SubType>Designer</SubType>
@@ -231,8 +240,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Octokit">
-      <HintPath>..\packages\Octokit.0.3.0\lib\portable-net45+wp80+win\Octokit.dll</HintPath>
+    <Reference Include="Octokit, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Octokit.0.3.1\lib\portable-net45+wp80+win\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.Immutable">
       <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.30\lib\portable-net45+win8+wp8\System.Collections.Immutable.dll</HintPath>
