@@ -46,20 +46,24 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1">
-            <phone:Pivot x:Name="MainPivot" SelectionChanged="MainPivot_SelectionChanged" >
+            <phone:Pivot x:Name="MainPivot" SelectionChanged="MainPivot_SelectionChanged" Margin="0">
+                <phone:Pivot.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextTitle2Style}"/>
+                    </DataTemplate>
+                </phone:Pivot.HeaderTemplate>
                 <phone:PivotItem Header="Branches">
                     <win8github:TabBranchesList />
                 </phone:PivotItem>
 
                 <phone:PivotItem Header="Issues">
+                    <win8github:TabIssuesList />
                 </phone:PivotItem>
 
                 <phone:PivotItem Header="Readme">
-
                     <ScrollViewer Height="auto" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                         <phone:WebBrowser x:Name="web"/>
                     </ScrollViewer>
-
                 </phone:PivotItem>
             </phone:Pivot>
         </Grid>

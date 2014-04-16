@@ -14,8 +14,8 @@
         <phone:LongListSelector ItemsSource="{Binding Items}" x:Name="llsBranches" SelectionChanged="llsBranches_SelectionChanged">
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="0,0,0,17">
-                        <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+                    <StackPanel Margin="15,0,0,17">
+                        <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle2Style}"/>
                         <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                     </StackPanel>
                 </DataTemplate>

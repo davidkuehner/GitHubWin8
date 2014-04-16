@@ -60,6 +60,16 @@ namespace GitHubWin8Phone
 
         #endregion
 
+        private void BtnLogoutRepositoryAppBar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Still to implement :) ");
+        }
+
+        private void BtnLogoutNewsAppBar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Still to implement :) ");
+        }
+
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()

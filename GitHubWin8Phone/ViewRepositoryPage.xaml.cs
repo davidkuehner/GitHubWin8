@@ -27,6 +27,8 @@ namespace GitHubWin8Phone
             if (Repository != null)
             {                
                 App.BranchesViewModel = new BranchesViewModel(Repository);
+                App.IssuesViewModel = new IssuesViewModel(Repository);
+                App.IssuesViewModel.LoadData();
                 LoadReadme();             
             }
             else
@@ -83,7 +85,6 @@ namespace GitHubWin8Phone
                 case 0:
                     ApplicationBar = (ApplicationBar)this.Resources["BranchesAppBar"];
                     break;
-
                 case 1:
                     ApplicationBar = (ApplicationBar)this.Resources["IssuesAppBar"];
                     break;
@@ -103,8 +104,17 @@ namespace GitHubWin8Phone
 
         private void BtnRefreshIssuesAppBar_Click(object sender, EventArgs e)
         {
+            if(App.IssuesViewModel != null)
+            {
+                App.IssuesViewModel.ReloadData();
+            }
+        }
+
+        private void BtnAddIssuesAppBar_Click(object sender, EventArgs e)
+        {
 
         }
+
 
         private void BtnBackBranchesAppBar_Click(object sender, EventArgs e)
         {
@@ -117,12 +127,7 @@ namespace GitHubWin8Phone
             {
                 App.BranchesViewModel.ReloadData();
             }
-        }
-
-        private void BtnAddIssuesAppBar_Click(object sender, EventArgs e)
-        {
-
-        }
+        }        
 
         private void BtnBackReadmeAppBar_Click(object sender, EventArgs e)
         {

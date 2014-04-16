@@ -107,6 +107,9 @@
     <Compile Include="TabCommitsList.xaml.cs">
       <DependentUpon>TabCommitsList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TabIssuesList.xaml.cs">
+      <DependentUpon>TabIssuesList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabNewsList.xaml.cs">
       <DependentUpon>TabNewsList.xaml</DependentUpon>
     </Compile>
@@ -115,7 +118,9 @@
     </Compile>
     <Compile Include="ViewBranchPage.xaml.cs" />
     <Compile Include="ViewModels\BranchesViewModel.cs" />
+    <Compile Include="ViewModels\IssueItemViewModel.cs" />
     <Compile Include="ViewModels\BranchItemViewModel.cs" />
+    <Compile Include="ViewModels\IssuesViewModel.cs" />
     <Compile Include="ViewModels\CommitsViewModel.cs" />
     <Compile Include="ViewModels\CommitItemViewModel.cs" />
     <Compile Include="ViewModels\RepositoryItemViewModel.cs" />
@@ -145,6 +150,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TabCommitsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabIssuesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -34,6 +34,11 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0">
             <phone:Pivot Grid.Row="1" x:Name="MainPivot">
+                <phone:Pivot.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextTitle2Style}" />
+                    </DataTemplate>
+                </phone:Pivot.HeaderTemplate>
                 <!--Pivot item one-->
                 <phone:PivotItem Header="Commits">
                     <win8github:TabCommitsList />
