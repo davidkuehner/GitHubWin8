@@ -122,6 +122,26 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        public async Task<bool> CreateIssue(NewIssue issue)
+        {            
+            Issue result = await App.GitHubClient.Issue.Create(Repository.Owner.Login, Repository.Name, issue);            
+            return result != null;            
+        }
+
+        public async Task<List<string>> GetCollaboratorsAsString()
+        {
+            List<string> result = new List<string>();
+            result.Add(null);
+            IReadOnlyList<Octokit.User> users = await App.GitHubClient.Repository.RepoCollaborators.GetAll(Repository.Owner.Login, Repository.Name);
+
+            foreach(User user in users)
+            {
+                result.Add(user.Login);
+            }
+
+            return result;
+        }
+
         public void ReloadData()
         {
             IsDataLoaded = false;

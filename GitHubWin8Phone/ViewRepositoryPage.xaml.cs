@@ -112,7 +112,7 @@ namespace GitHubWin8Phone
 
         private void BtnAddIssuesAppBar_Click(object sender, EventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/CreateIssuePage.xaml", UriKind.Relative));
         }
 
 
