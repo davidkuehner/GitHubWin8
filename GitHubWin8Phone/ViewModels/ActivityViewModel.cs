@@ -44,8 +44,8 @@ namespace GitHubWin8Phone.ViewModels
             if (!IsDataLoaded)
             {
                 this.Items.Clear();
-
-                IReadOnlyList<Octokit.Activity> activities = await App.GitHubClient.Activity.Events.GetAll();
+                String currentUserName = App.GitHubClient.Credentials.Login;
+                IReadOnlyList<Octokit.Activity> activities = await App.GitHubClient.Activity.Events.GetUserReceived(currentUserName);
 
                 foreach (Octokit.Activity activity in activities)
                 {
