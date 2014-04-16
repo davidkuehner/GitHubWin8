@@ -25,6 +25,8 @@
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -113,8 +115,8 @@
     <Compile Include="TabIssuesList.xaml.cs">
       <DependentUpon>TabIssuesList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TabNewsList.xaml.cs">
-      <DependentUpon>TabNewsList.xaml</DependentUpon>
+    <Compile Include="TabActivityList.xaml.cs">
+      <DependentUpon>TabActivityList.xaml</DependentUpon>
     </Compile>
     <Compile Include="TabRepositoriesList.xaml.cs">
       <DependentUpon>TabRepositoriesList.xaml</DependentUpon>
@@ -126,9 +128,10 @@
     <Compile Include="ViewModels\IssuesViewModel.cs" />
     <Compile Include="ViewModels\CommitsViewModel.cs" />
     <Compile Include="ViewModels\CommitItemViewModel.cs" />
+    <Compile Include="ViewModels\ActivityItemViewModel.cs" />
     <Compile Include="ViewModels\RepositoryItemViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
-    <Compile Include="ViewModels\NewsViewModel.cs" />
+    <Compile Include="ViewModels\ActivityViewModel.cs" />
     <Compile Include="ViewModels\RepositoriesViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewRepositoryPage.xaml.cs">
@@ -164,7 +167,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TabNewsList.xaml">
+    <Page Include="TabActivityList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -262,7 +265,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Octokit, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -300,4 +304,5 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

@@ -22,10 +22,10 @@
                 <shell:ApplicationBarMenuItem Text="Logout" x:Name="BtnLogoutRepositoryAppBar" Click="BtnLogoutRepositoryAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-        <shell:ApplicationBar x:Key="NewsAppBar" IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" Text="refresh" x:Name="BtnRefreshNewsAppBar" Click="BtnRefreshNewsAppBar_Click"/>
+        <shell:ApplicationBar x:Key="ActivityAppBar" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/refresh.png" Text="refresh" x:Name="BtnRefreshActivityAppBar" Click="BtnRefreshActivityAppBar_Click"/>
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Logout" x:Name="BtnLogoutNewsAppBar" Click="BtnLogoutNewsAppBar_Click"/>
+                <shell:ApplicationBarMenuItem Text="Logout" x:Name="BtnLogoutActivityAppBar" Click="BtnLogoutActivityAppBar_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.Resources>
@@ -62,8 +62,8 @@
         <!--Pivot Control-->
         <phone:Pivot Grid.Row="1" x:Name="MainPivot" SelectionChanged="MainPivot_SelectionChanged">
             <!--Pivot item one-->
-            <phone:PivotItem Header="News">
-                <win8github:TabNewsList />
+            <phone:PivotItem Header="Activity">
+                <win8github:TabActivityList />
             </phone:PivotItem>
 
             <!--Pivot item two-->

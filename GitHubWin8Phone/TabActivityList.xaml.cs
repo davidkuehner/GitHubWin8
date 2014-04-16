@@ -9,21 +9,23 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using GitHubWin8Phone.ViewModels;
 using System.Collections.ObjectModel;
+using Octokit;
 
 namespace GitHubWin8Phone
 {
-    public partial class TabNewsList : UserControl
+    public partial class TabActivityList : UserControl
     {
-        public TabNewsList()
+        public TabActivityList()
         {
             InitializeComponent();
 
-            DataContext = App.NewsViewModel;
+            DataContext = App.ActivityViewModel;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            App.NewsViewModel.LoadData();
+            DataContext = App.ActivityViewModel;
+            App.ActivityViewModel.LoadData();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace GitHubWin8Phone
             switch (((Pivot)sender).SelectedIndex)
             {
                 case 0:
-                    ApplicationBar = (ApplicationBar)this.Resources["NewsAppBar"];
+                    ApplicationBar = (ApplicationBar)this.Resources["ActivityAppBar"];
                     break;
                 case 1:
                     ApplicationBar = (ApplicationBar)this.Resources["RepositoriesAppBar"];
@@ -52,9 +52,9 @@ namespace GitHubWin8Phone
             App.RepositoriesViewModel.ReloadData();
         }
 
-        private void BtnRefreshNewsAppBar_Click(object sender, EventArgs e)
+        private void BtnRefreshActivityAppBar_Click(object sender, EventArgs e)
         {
-            //Refresh news here!
+            //Refresh Activity here!
             MessageBox.Show("Still to implement :) ");
         }
 
@@ -65,7 +65,7 @@ namespace GitHubWin8Phone
             MessageBox.Show("Still to implement :) ");
         }
 
-        private void BtnLogoutNewsAppBar_Click(object sender, EventArgs e)
+        private void BtnLogoutActivityAppBar_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Still to implement :) ");
         }

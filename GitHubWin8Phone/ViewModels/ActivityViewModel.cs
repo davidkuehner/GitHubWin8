@@ -7,38 +7,17 @@ using System.Threading.Tasks;
 
 namespace GitHubWin8Phone.ViewModels
 {
-    public class NewsViewModel : INotifyPropertyChanged
+    public class ActivityViewModel : INotifyPropertyChanged
     {
-        public NewsViewModel()
+        public ActivityViewModel()
         {
-            this.Items = new ObservableCollection<ItemViewModel>();
+            this.Items = new ObservableCollection<ActivityItemViewModel>();
         }
 
         /// <summary>
         /// A collection for ItemViewModel objects.
         /// </summary>
-        public ObservableCollection<ItemViewModel> Items { get; private set; }
-
-        private string _sampleProperty = "Sample Runtime Property Value";
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding
-        /// </summary>
-        /// <returns></returns>
-        public string SampleProperty
-        {
-            get
-            {
-                return _sampleProperty;
-            }
-            set
-            {
-                if (value != _sampleProperty)
-                {
-                    _sampleProperty = value;
-                    NotifyPropertyChanged("SampleProperty");
-                }
-            }
-        }
+        public ObservableCollection<ActivityItemViewModel> Items { get; private set; }
 
         /// <summary>
         /// Sample property that returns a localized string
@@ -62,7 +41,7 @@ namespace GitHubWin8Phone.ViewModels
         /// </summary>
         public async void LoadData()
         {
-            if(!IsDataLoaded)
+            if (!IsDataLoaded)
             {
                 this.Items.Clear();
 
@@ -70,16 +49,17 @@ namespace GitHubWin8Phone.ViewModels
 
                 foreach (Octokit.Activity activity in activities)
                 {
-                    Type t = activity.GetType();
-
-                    this.Items.Add(new ItemViewModel() { LineOne = activity. + " : " + activity.Type, LineTwo = activity.Actor.Name, LineThree = activity.CreatedAt.ToString() });
-
-                    //this.Items.Add(new ItemViewModel() { LineOne = activity.CreatedAt.ToString() + " : " + activity.Type, LineTwo = activity.Actor.Name, LineThree = activity.CreatedAt.ToString() });
+                    this.Items.Add(new ActivityItemViewModel(activity));
                 }
 
                 this.IsDataLoaded = true;
             }
-            
+        }
+
+        public void ReloadData()
+        {
+            IsDataLoaded = false;
+            LoadData();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
