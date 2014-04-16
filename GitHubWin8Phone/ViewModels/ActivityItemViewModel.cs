@@ -16,9 +16,9 @@ namespace GitHubWin8Phone.ViewModels
         public ActivityItemViewModel(Activity activity)
         {
             this.Activity = activity;
-            this.LineOne = "todo" ;
-            this.LineTwo = "name";// activity.Actor.Name;
-            this.LineThree = activity.CreatedAt.DateTime.ToShortDateString();
+            this.LineOne = activity.Type ;
+            this.LineTwo = activity.Actor.Login;// activity.Actor.Name;
+            this.LineThree = activity.CreatedAt.DateTime.ToLongDateString() +" at "+ activity.CreatedAt.DateTime.ToLongTimeString();
 
         }
 
