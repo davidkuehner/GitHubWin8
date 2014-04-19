@@ -9,6 +9,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using GitHubWin8Phone.Resources;
+using System.Threading.Tasks;
 
 namespace GitHubWin8Phone.ViewModels
 {
@@ -16,7 +20,7 @@ namespace GitHubWin8Phone.ViewModels
     {
         public ActivityItemViewModel(Activity activity)
         {
-            
+
             this.Activity = activity;
             this.LineOne = Regex.Replace(activity.Type.Replace("Event", ""), "(\\B[A-Z])", " $1") + " at " + activity.Repo.Name;
             this.LineTwo = activity.Actor.Login;
@@ -36,6 +40,21 @@ namespace GitHubWin8Phone.ViewModels
                 activity = value;
                 NotifyPropertyChanged("Activity");
             }
+        }
+
+
+        public Repository Repository
+        {
+            get
+            {
+                /*String url = activity.Repo.Url;
+                String[] param = url.Split('/');
+                Task<Repository> repositoriesTask = App.GitHubClient.Repository.Get(param[param.Length - 2], param[param.Length - 1]);
+                Repository repository = repositoriesTask.Result;
+                return repository;*/
+                return null; // Just do a go back for now instead of application crash.
+            }
+
         }
 
         /// <summary>

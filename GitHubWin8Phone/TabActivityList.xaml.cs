@@ -27,5 +27,19 @@ namespace GitHubWin8Phone
             DataContext = App.ActivityViewModel;
             App.ActivityViewModel.LoadData();
         }
+
+        private void llsActivity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (llsActivity.SelectedItem != null)
+            {
+                var activityItem = llsActivity.SelectedItem as ActivityItemViewModel;
+
+                PhoneApplicationService.Current.State["repository"] = activityItem.Repository;
+
+                var frame = App.Current.RootVisual as PhoneApplicationFrame;
+                frame.Navigate(new Uri("/ViewRepositoryPage.xaml", UriKind.Relative));
+            }
+            llsActivity.SelectedItem = null;
+        }
     }
 }

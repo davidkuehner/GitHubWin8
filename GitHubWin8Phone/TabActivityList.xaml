@@ -13,7 +13,7 @@
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <!--Double line list with text wrapping-->
-        <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
+        <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}" x:Name="llsActivity" SelectionChanged="llsActivity_SelectionChanged">
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="0,0,0,17">
