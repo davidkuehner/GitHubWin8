@@ -33,6 +33,7 @@ namespace GitHubWin8Phone
             }
             else
             {
+                MessageBox.Show("Repository not found, sorry...");
                 NavigationService.GoBack();
             }
         }

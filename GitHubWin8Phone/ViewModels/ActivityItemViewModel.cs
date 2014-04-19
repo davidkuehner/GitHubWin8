@@ -43,18 +43,12 @@ namespace GitHubWin8Phone.ViewModels
         }
 
 
-        public Repository Repository
+        public async Task<Repository> getRelatedRepository()
         {
-            get
-            {
-                /*String url = activity.Repo.Url;
+                String url = activity.Repo.Url;
                 String[] param = url.Split('/');
-                Task<Repository> repositoriesTask = App.GitHubClient.Repository.Get(param[param.Length - 2], param[param.Length - 1]);
-                Repository repository = repositoriesTask.Result;
-                return repository;*/
-                return null; // Just do a go back for now instead of application crash.
-            }
-
+                Repository repository = await App.GitHubClient.Repository.Get(param[param.Length - 2], param[param.Length - 1]);
+                return repository;
         }
 
         /// <summary>
