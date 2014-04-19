@@ -54,8 +54,7 @@ namespace GitHubWin8Phone
 
         private void BtnRefreshActivityAppBar_Click(object sender, EventArgs e)
         {
-            //Refresh Activity here!
-            MessageBox.Show("Still to implement :) ");
+            App.ActivityViewModel.ReloadData();
         }
 
         #endregion
