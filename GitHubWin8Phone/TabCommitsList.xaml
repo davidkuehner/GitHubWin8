@@ -9,7 +9,7 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="400" d:DesignWidth="300">
+    d:DesignHeight="500" d:DesignWidth="300" Loaded="UserControl_Loaded">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <!--Double line list with text wrapping-->
@@ -17,8 +17,10 @@
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="0,0,0,17">
-                        <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                        <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                        <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextTitle2Style}"/>
+                        <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextBlockBase}"/>
+                        <TextBlock Text="{Binding LineThree}" TextWrapping="Wrap" Margin="12,-6,12,30" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                        <Border Margin="48,7,30,0" Name="border" Height="2" VerticalAlignment="Top"  BorderBrush="Gray" BorderThickness="2" />
                     </StackPanel>
                 </DataTemplate>
             </phone:LongListSelector.ItemTemplate>

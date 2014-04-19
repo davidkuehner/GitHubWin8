@@ -18,5 +18,13 @@ namespace GitHubWin8Phone
 
             DataContext = App.CommitsViewModel;
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (App.CommitsViewModel != null)
+            {
+                DataContext = App.CommitsViewModel;
+            }
+        }
     }
 }

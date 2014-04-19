@@ -17,10 +17,8 @@ namespace GitHubWin8Phone.ViewModels
         {
             this.Commit = commit;
             this.LineOne = commit.Message;
-            this.LineTwo = commit.Sha;
-            this.LineThree = commit.User.Login;
-            this.LineFour = commit.Committer.Date.ToString();
-
+            this.LineTwo = commit.Author.Name;
+            this.LineThree = commit.Committer.Date.ToLongDateString() + " at " + commit.Committer.Date.ToLongTimeString();
         }
 
         private Commit commit;
@@ -96,23 +94,6 @@ namespace GitHubWin8Phone.ViewModels
                 {
                     lineThree = value;
                     NotifyPropertyChanged("LineThree");
-                }
-            }
-        }
-
-        private string lineFour;
-        public string LineFour
-        {
-            get
-            {
-                return lineFour;
-            }
-            set
-            {
-                if (value != lineFour)
-                {
-                    lineThree = value;
-                    NotifyPropertyChanged("LineFour");
                 }
             }
         }

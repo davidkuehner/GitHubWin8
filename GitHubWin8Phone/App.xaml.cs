@@ -20,6 +20,7 @@ namespace GitHubWin8Phone
         private static IssuesViewModel issuesViewModel = null; // for current repo        
         private static ActivityViewModel activityViewModel = null;
         private static Octokit.GitHubClient gitHubClient = null;
+        private static String gitHubApiPrefix = "https://api.github.com/";
 
         /// <summary>
         /// The user credentials used in the whole application
@@ -116,6 +117,22 @@ namespace GitHubWin8Phone
                     activityViewModel = new ActivityViewModel();
 
                 return activityViewModel;
+            }
+        }
+
+        /// <summary>
+        /// A static String used to locate the GitHub API mannualy.
+        /// </summary>
+        /// <returns>The GitHubApiPrefix string.</returns>
+        public static String GitHubApiPrefix
+        {
+            get
+            {
+                return gitHubApiPrefix;
+            }
+            set
+            {
+                gitHubApiPrefix = value;
             }
         }
 
