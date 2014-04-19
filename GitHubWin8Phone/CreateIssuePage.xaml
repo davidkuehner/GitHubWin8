@@ -37,6 +37,16 @@
                     </TextBox>
                     <TextBlock HorizontalAlignment="Left"  Margin="12, 0, 0,0" TextWrapping="Wrap" Text="Assignee" VerticalAlignment="Top"/>
                     <toolkit:ListPicker x:Name="ListPickerCollaborator" ItemsSource="{Binding Collaborators}"></toolkit:ListPicker>
+                    <TextBlock HorizontalAlignment="Left"  Margin="12, 0, 0,0" TextWrapping="Wrap" Text="Milestone" VerticalAlignment="Top"/>
+                    <toolkit:ListPicker x:Name="ListPickerMilestone" ItemsSource="{Binding Milestones}">
+                        <toolkit:ListPicker.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Title}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </toolkit:ListPicker.ItemTemplate>
+                    </toolkit:ListPicker>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

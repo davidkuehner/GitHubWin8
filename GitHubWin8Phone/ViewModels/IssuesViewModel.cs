@@ -128,11 +128,22 @@ namespace GitHubWin8Phone.ViewModels
             return result != null;            
         }
 
+        public async Task<IList<Milestone>> GetMilestones()
+        {
+            List<Milestone> result = new List<Milestone>();
+            result.Add(null); //No milestone
+
+            IReadOnlyList<Octokit.Milestone> milestones = await App.GitHubClient.Issue.Milestone.GetForRepository(Repository.Owner.Login, Repository.Name);
+            result.AddRange(milestones);
+
+            return result;
+        }
+
         public async Task<List<string>> GetCollaboratorsAsString()
         {
             List<string> result = new List<string>();
             result.Add(null);
-            IReadOnlyList<Octokit.User> users = await App.GitHubClient.Repository.RepoCollaborators.GetAll(Repository.Owner.Login, Repository.Name);
+            IReadOnlyList<Octokit.User> users = await App.GitHubClient.Repository.RepoCollaborators.GetAll(Repository.Owner.Login, Repository.Name);            
 
             foreach(User user in users)
             {

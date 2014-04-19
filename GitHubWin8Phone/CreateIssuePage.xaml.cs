@@ -21,12 +21,18 @@ namespace GitHubWin8Phone
             InitializeComponent();
             this.Issue = new Issue();
             LoadCollaborators();
+            LoadMilestones();
             DataContext = this;
         }
 
         private async void LoadCollaborators()
         {
             this.Collaborators = await App.IssuesViewModel.GetCollaboratorsAsString();
+        }
+
+        private async void LoadMilestones()
+        {
+            this.Milestones = await App.IssuesViewModel.GetMilestones();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -56,8 +62,19 @@ namespace GitHubWin8Phone
             else
             {
                 NewIssue newIssue = new NewIssue(Issue.Title);
+
+                //Set assignee
                 newIssue.Assignee = ListPickerCollaborator.SelectedItem as string;
 
+                //Set milestone
+                newIssue.Milestone = null;
+                Milestone milestone = ListPickerMilestone.SelectedItem as Milestone;                
+                if(milestone != null)
+                {
+                    newIssue.Milestone = milestone.Number;
+                }
+
+                //Try to create the issue
                 bool ok = await App.IssuesViewModel.CreateIssue(newIssue);
 
                 if (!ok)
@@ -101,6 +118,17 @@ namespace GitHubWin8Phone
             }
         }
 
+        private IList<Milestone> milestones;
+        public IList<Milestone> Milestones
+        {
+            get { return milestones; }
+            set
+            {
+                milestones = value;
+                NotifyPropertyChanged("Milestones");
+            }
+        }
+
         private Issue issue;
         public Issue Issue
         {
@@ -121,6 +149,6 @@ namespace GitHubWin8Phone
                 repository = value;
                 NotifyPropertyChanged("Repository");
             }
-        }      
+        }
     }
 }
