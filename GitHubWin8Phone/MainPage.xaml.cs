@@ -20,8 +20,9 @@ namespace GitHubWin8Phone
         // Constructor
         public MainPage()
         {
-            InitializeComponent();
 
+            InitializeComponent();
+           
             // Set the data context of the listbox control to the sample data
             DataContext = this;
 
@@ -61,12 +62,18 @@ namespace GitHubWin8Phone
 
         private void BtnLogoutRepositoryAppBar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Still to implement :) ");
+            this.leave();
         }
 
         private void BtnLogoutActivityAppBar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Still to implement :) ");
+            this.leave();
+        }
+
+        private void leave()
+        {
+            App.GitHubClient = null;
+            this.NavigationService.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));
         }
 
 

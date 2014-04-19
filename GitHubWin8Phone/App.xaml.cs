@@ -31,10 +31,11 @@ namespace GitHubWin8Phone
             {
                 if(gitHubClient == null)
                 {
-                    Octokit.Credentials credential = new Octokit.Credentials("GitHubWin8Tester", "hearc2014");
-                    Octokit.Internal.InMemoryCredentialStore inMemoryCredentialStore = new Octokit.Internal.InMemoryCredentialStore(credential);
+                    /*Octokit.Credentials credentials = new Octokit.Credentials("GitHubWin8Tester", "hearc2014");
+                    Octokit.Internal.InMemoryCredentialStore inMemoryCredentialStore = new Octokit.Internal.InMemoryCredentialStore(credentials);
 
-                    gitHubClient = new Octokit.GitHubClient(new Octokit.ProductHeaderValue("GitHubWin8"), inMemoryCredentialStore);
+                    gitHubClient = new Octokit.GitHubClient(new Octokit.ProductHeaderValue("GitHubWin8"), inMemoryCredentialStore);*/
+                    MessageBox.Show("No credentials...");
                 }
                 return gitHubClient;
             }
