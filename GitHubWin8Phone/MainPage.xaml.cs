@@ -74,6 +74,19 @@ namespace GitHubWin8Phone
         {
             App.GitHubClient = null;
             this.NavigationService.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));
+
+            //Clear previous application context
+            ClearNavigationHistory();
+            PhoneApplicationService.Current.State.Clear();
+        }
+
+        private void ClearNavigationHistory()
+        {
+            var entry = this.NavigationService.RemoveBackEntry();
+            while (entry != null)
+            {
+                entry = this.NavigationService.RemoveBackEntry();
+            }
         }
 
 
