@@ -13,6 +13,9 @@ using Octokit;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the repositories list UserControl
+    /// </summary>
     public partial class TabRepositoriesList : UserControl
     {
         public TabRepositoriesList()
@@ -41,9 +44,6 @@ namespace GitHubWin8Phone
                 frame.Navigate(new Uri("/ViewRepositoryPage.xaml", UriKind.Relative));                
             }
             llsRepositories.SelectedItem = null;
-        }
-        
-        
-       
+        }                      
     }
 }

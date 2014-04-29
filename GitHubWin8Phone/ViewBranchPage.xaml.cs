@@ -12,6 +12,9 @@ using GitHubWin8Phone.ViewModels;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the branche view page
+    /// </summary>
     public partial class ViewBranchPage : PhoneApplicationPage
     {
         public ViewBranchPage()

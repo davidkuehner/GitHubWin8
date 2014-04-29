@@ -13,6 +13,9 @@ using Octokit;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the activity list UserControl
+    /// </summary>
     public partial class TabActivityList : UserControl
     {
         public TabActivityList()

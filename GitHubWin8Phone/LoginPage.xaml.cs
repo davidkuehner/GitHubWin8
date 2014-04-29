@@ -13,6 +13,9 @@ using Octokit;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the issue creation page
+    /// </summary>
     public partial class LoginPage : PhoneApplicationPage
     {
         public LoginPage()
@@ -55,8 +58,14 @@ namespace GitHubWin8Phone
             
         }
 
+        /// <summary>
+        /// Username property bound to the GUI
+        /// </summary>
         public String Username {get; set;}
 
+        /// <summary>
+        /// Password property bound to the GUI
+        /// </summary>
         public String Password { get; set; }
         
         private void textBoxLogin_TextChanged(object sender, TextChangedEventArgs e)

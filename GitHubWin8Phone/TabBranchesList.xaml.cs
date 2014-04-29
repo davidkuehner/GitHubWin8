@@ -12,6 +12,9 @@ using Octokit;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the branches list UserControl
+    /// </summary>
     public partial class TabBranchesList : UserControl
     {
         public TabBranchesList()

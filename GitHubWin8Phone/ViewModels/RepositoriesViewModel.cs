@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GitHubWin8Phone.ViewModels
 {
+    /// <summary>
+    /// Manages all repositories for the current logged in user
+    /// </summary>
     public class RepositoriesViewModel : INotifyPropertyChanged
     {
         public RepositoriesViewModel()
@@ -17,39 +20,7 @@ namespace GitHubWin8Phone.ViewModels
         /// <summary>
         /// A collection for ItemViewModel objects.
         /// </summary>
-        public ObservableCollection<RepositoryItemViewModel> Items { get; private set; }
-
-        private string _sampleProperty = "Sample Runtime Property Value";
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding
-        /// </summary>
-        /// <returns></returns>
-        public string SampleProperty
-        {
-            get
-            {
-                return _sampleProperty;
-            }
-            set
-            {
-                if (value != _sampleProperty)
-                {
-                    _sampleProperty = value;
-                    NotifyPropertyChanged("SampleProperty");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Sample property that returns a localized string
-        /// </summary>
-        public string LocalizedSampleProperty
-        {
-            get
-            {
-                return AppResources.SampleProperty;
-            }
-        }
+        public ObservableCollection<RepositoryItemViewModel> Items { get; private set; }             
 
         public bool IsDataLoaded
         {
@@ -58,7 +29,7 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         /// <summary>
-        /// Creates and adds a few ItemViewModel objects into the Items collection.
+        /// Loads data from GitHub and puts it into an observable collection
         /// </summary>
         public async void LoadData()
         {
@@ -77,12 +48,18 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        /// <summary>
+        /// Force data reloading
+        /// </summary>
         public void ReloadData()
         {
             IsDataLoaded = false;
             LoadData();
         }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

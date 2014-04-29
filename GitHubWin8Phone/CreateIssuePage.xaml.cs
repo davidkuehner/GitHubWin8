@@ -14,6 +14,9 @@ using System.Windows.Input;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the issue creation page
+    /// </summary>
     public partial class CreateIssuePage : PhoneApplicationPage, INotifyPropertyChanged
     {
         public CreateIssuePage()
@@ -97,6 +100,9 @@ namespace GitHubWin8Phone
             }
         }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {
@@ -108,6 +114,9 @@ namespace GitHubWin8Phone
         }
 
         private List<string> collaborators;
+        /// <summary>
+        /// Available collaborators for the issue creation
+        /// </summary>
         public List<string> Collaborators
         {
             get { return collaborators; }
@@ -119,6 +128,9 @@ namespace GitHubWin8Phone
         }
 
         private IList<Milestone> milestones;
+        /// <summary>
+        /// Available milestones for the issue creation
+        /// </summary>
         public IList<Milestone> Milestones
         {
             get { return milestones; }
@@ -130,6 +142,9 @@ namespace GitHubWin8Phone
         }
 
         private Issue issue;
+        /// <summary>
+        /// Issue bound to the creation form
+        /// </summary>
         public Issue Issue
         {
             get { return issue; }
@@ -141,6 +156,9 @@ namespace GitHubWin8Phone
         }
 
         private Repository repository;
+        /// <summary>
+        /// Repo object to add the issue
+        /// </summary>
         public Repository Repository
         {
             get { return repository; }

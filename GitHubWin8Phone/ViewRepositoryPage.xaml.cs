@@ -13,6 +13,9 @@ using System.ComponentModel;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the repository view page
+    /// </summary>
     public partial class ViewRepositoryPage : PhoneApplicationPage, INotifyPropertyChanged
     {
         public ViewRepositoryPage()
@@ -42,8 +45,11 @@ namespace GitHubWin8Phone
         {
             Readme = await App.GitHubClient.Repository.GetReadmeHtml(Repository.Owner.Login, Repository.Name);
             web.NavigateToString(Readme);            
-        }                
+        }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {
@@ -56,6 +62,9 @@ namespace GitHubWin8Phone
 
         #region Properties
         private Repository repository;
+        /// <summary>
+        /// Current repository, bound to the GUI
+        /// </summary>
         public Repository Repository
         {
             get { return repository; }
@@ -67,6 +76,9 @@ namespace GitHubWin8Phone
         }
 
         private string readme;
+        /// <summary>
+        /// Readme as HTML of the current repo
+        /// </summary>
         public string Readme
         {
             get { return readme; }
@@ -115,7 +127,6 @@ namespace GitHubWin8Phone
         {
             NavigationService.Navigate(new Uri("/CreateIssuePage.xaml", UriKind.Relative));
         }
-
 
         private void BtnBackBranchesAppBar_Click(object sender, EventArgs e)
         {

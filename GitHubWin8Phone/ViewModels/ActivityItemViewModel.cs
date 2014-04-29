@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 
 namespace GitHubWin8Phone.ViewModels
 {
+    /// <summary>
+    /// View-Model class, the purpose of this class is to link an Activity object to a graphical context (GUI)
+    /// </summary>
     public class ActivityItemViewModel : INotifyPropertyChanged
     {
         public ActivityItemViewModel(Activity activity)
@@ -29,6 +32,10 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         private Activity activity;
+
+        /// <summary>
+        /// Activity object attached to this item
+        /// </summary>
         public Activity Activity
         {
             get
@@ -42,7 +49,10 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Gets the repository related to the activity of this item
+        /// </summary>
+        /// <returns>Repository</returns>
         public async Task<Repository> getRelatedRepository()
         {
                 String url = activity.Repo.Url;
@@ -51,11 +61,10 @@ namespace GitHubWin8Phone.ViewModels
                 return repository;
         }
 
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
         private string lineOne;
+        /// <summary>
+        /// String representation of the activity (Line1)
+        /// </summary>
         public string LineOne
         {
             get
@@ -74,9 +83,8 @@ namespace GitHubWin8Phone.ViewModels
 
         private string lineTwo;
         /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// String representation of the activity (Line2)
         /// </summary>
-        /// <returns></returns>
         public string LineTwo
         {
             get
@@ -93,11 +101,10 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
         
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
         private string lineThree;
+        /// <summary>
+        /// String representation of the activity (Line3)
+        /// </summary>
         public string LineThree
         {
             get
@@ -114,6 +121,9 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

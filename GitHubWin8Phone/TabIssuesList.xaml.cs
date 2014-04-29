@@ -11,6 +11,9 @@ using GitHubWin8Phone.ViewModels;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the issues list UserControl
+    /// </summary>
     public partial class TabIssuesList : UserControl
     {
         public TabIssuesList()

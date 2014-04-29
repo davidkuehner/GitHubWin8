@@ -9,6 +9,9 @@ using System.Windows;
 
 namespace GitHubWin8Phone.ViewModels
 {
+    /// <summary>
+    /// Manages all issues for the current repo in the app
+    /// </summary>
     public class IssuesViewModel : INotifyPropertyChanged
     {
         public IssuesViewModel(Repository repository)
@@ -42,6 +45,9 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         private Repository repository;
+        /// <summary>
+        /// Repo this issue is related to
+        /// </summary>
         public Repository Repository
         {
             get { return repository; }
@@ -53,7 +59,7 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         /// <summary>
-        /// Creates and adds a few ItemViewModel objects into the Items collection.
+        /// Loads data from GitHub and puts it into an observable collection
         /// </summary>
         public async void LoadData()
         {
@@ -88,6 +94,11 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        /// <summary>
+        /// Closes an issue on github
+        /// </summary>
+        /// <param name="issue">Issue to close</param>
+        /// <returns>true if issue closed successfully, false otherwise</returns>
         public async Task<bool> CloseIssue(Issue issue)
         {
             IssueUpdate update = new IssueUpdate();
@@ -105,6 +116,11 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        /// <summary>
+        /// Reopen an issue on github
+        /// </summary>
+        /// <param name="issue">Issue to repoen</param>
+        /// <returns>true if issue reopened successfully, false otherwise</returns>
         public async Task<bool> ReopenIssue(Issue issue)
         {
             IssueUpdate update = new IssueUpdate();
@@ -122,12 +138,21 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        /// <summary>
+        /// Creates an issue on github
+        /// </summary>
+        /// <param name="issue">New issue</param>
+        /// <returns>true if issue created successfully, false otherwise</returns>
         public async Task<bool> CreateIssue(NewIssue issue)
         {            
             Issue result = await App.GitHubClient.Issue.Create(Repository.Owner.Login, Repository.Name, issue);            
             return result != null;            
         }
 
+        /// <summary>
+        /// Gets all milestones for the current repo
+        /// </summary>
+        /// <returns>list of milestones</returns>
         public async Task<IList<Milestone>> GetMilestones()
         {
             List<Milestone> result = new List<Milestone>();
@@ -139,6 +164,10 @@ namespace GitHubWin8Phone.ViewModels
             return result;
         }
 
+        /// <summary>
+        /// Gets all collaborators for the current repo
+        /// </summary>
+        /// <returns>list of collaborators names</returns>
         public async Task<List<string>> GetCollaboratorsAsString()
         {
             List<string> result = new List<string>();
@@ -153,12 +182,18 @@ namespace GitHubWin8Phone.ViewModels
             return result;
         }
 
+        /// <summary>
+        /// Force data reloading
+        /// </summary>
         public void ReloadData()
         {
             IsDataLoaded = false;
             LoadData();
         }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

@@ -9,6 +9,9 @@ using System.Windows;
 
 namespace GitHubWin8Phone.ViewModels
 {
+    /// <summary>
+    /// Manages all commits for the current repo in the app
+    /// </summary>
     public class CommitsViewModel : INotifyPropertyChanged
     {
         public CommitsViewModel(Branch branch)
@@ -40,7 +43,9 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         private Branch branch;
-
+        /// <summary>
+        /// GitHub Branch the commits are related to
+        /// </summary>
         public Branch Branch
         {
             get { return branch; }
@@ -52,7 +57,7 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         /// <summary>
-        /// Creates and adds a few ItemViewModel objects into the Items collection.
+        /// Loads data from GitHub and puts it into an observable collection
         /// </summary>
         public async void LoadData()
         {
@@ -75,6 +80,14 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        /// <summary>
+        /// Loads all commits from github for a given user and reference (branch, ...)
+        /// </summary>
+        /// <param name="apiConnection">apiConnection object from Octokit</param>
+        /// <param name="owner">Name of the repo owner (login)</param>
+        /// <param name="name">Name of the repo</param>
+        /// <param name="reference"></param>
+        /// <returns>List of found commits</returns>
         public Task<IReadOnlyList<Commit>> GetAllCommits(ApiConnection apiConnection, string owner, string name, string reference)
         {
             var parameters = new Dictionary<string, string>();
@@ -83,18 +96,29 @@ namespace GitHubWin8Phone.ViewModels
             return apiConnection.GetAll<Commit>(RepoCommits(owner, name), parameters);
         }
 
+        /// <summary>
+        /// Creates a github URI from owner name and repo name
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="repo"></param>
+        /// <returns></returns>
         public static Uri RepoCommits(string owner, string repo)
         {
             return new Uri(String.Format(App.GitHubApiPrefix+"repos/{0}/{1}/commits", owner, repo));
         }
 
-
+        /// <summary>
+        /// Force data reloading
+        /// </summary>
         public void ReloadData()
         {
             IsDataLoaded = false;
             LoadData();
         }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

@@ -11,6 +11,9 @@ using System.Windows.Media.Animation;
 
 namespace GitHubWin8Phone.ViewModels
 {
+    /// <summary>
+    /// View-Model class, the purpose of this class is to link a Commit object to a graphical context (GUI)
+    /// </summary>
     public class CommitItemViewModel : INotifyPropertyChanged
     {
         public CommitItemViewModel(Commit commit)
@@ -22,6 +25,9 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         private Commit commit;
+        /// <summary>
+        /// Commit object attached to this item
+        /// </summary>
         public Commit Commit
         {
             get
@@ -34,12 +40,11 @@ namespace GitHubWin8Phone.ViewModels
                 NotifyPropertyChanged("Commit");
             }
         }
-
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
+ 
         private string lineOne;
+        /// <summary>
+        /// String representation of the branch (Line1)
+        /// </summary>
         public string LineOne
         {
             get
@@ -58,9 +63,8 @@ namespace GitHubWin8Phone.ViewModels
 
         private string lineTwo;
         /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// String representation of the branch (Line2)
         /// </summary>
-        /// <returns></returns>
         public string LineTwo
         {
             get
@@ -76,12 +80,11 @@ namespace GitHubWin8Phone.ViewModels
                 }
             }
         }
-        
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
+              
         private string lineThree;
+        /// <summary>
+        /// String representation of the branch (Line3)
+        /// </summary>
         public string LineThree
         {
             get
@@ -98,6 +101,9 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

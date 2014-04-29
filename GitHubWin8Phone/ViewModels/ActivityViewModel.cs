@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GitHubWin8Phone.ViewModels
 {
+    /// <summary>
+    /// Manages all GitHub activities in the app
+    /// </summary>
     public class ActivityViewModel : INotifyPropertyChanged
     {
         public ActivityViewModel()
@@ -37,7 +40,7 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         /// <summary>
-        /// Creates and adds a few ItemViewModel objects into the Items collection.
+        /// Loads data from GitHub and puts it into an observable collection
         /// </summary>
         public async void LoadData()
         {
@@ -56,12 +59,18 @@ namespace GitHubWin8Phone.ViewModels
             }
         }
 
+        /// <summary>
+        /// Force data reloading
+        /// </summary>
         public void ReloadData()
         {
             IsDataLoaded = false;
             LoadData();
         }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

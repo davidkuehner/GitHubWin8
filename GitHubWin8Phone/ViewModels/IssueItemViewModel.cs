@@ -11,6 +11,9 @@ using System.Windows.Media.Animation;
 
 namespace GitHubWin8Phone.ViewModels
 {
+    /// <summary>
+    /// View-Model class, the purpose of this class is to link an Issue object to a graphical context (GUI)
+    /// </summary>
     public class IssueItemViewModel : INotifyPropertyChanged
     {
         public IssueItemViewModel(Issue issue)
@@ -31,6 +34,9 @@ namespace GitHubWin8Phone.ViewModels
         }
 
         private Issue issue;
+        /// <summary>
+        /// Issue object attached to this item
+        /// </summary>
         public Issue Issue
         {
             get
@@ -43,12 +49,11 @@ namespace GitHubWin8Phone.ViewModels
                 NotifyPropertyChanged("Issue");
             }
         }
-
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
-        /// </summary>
-        /// <returns></returns>
+       
         private string lineOne;
+        /// <summary>
+        /// String representation of the activity (Line1)
+        /// </summary>
         public string LineOne
         {
             get
@@ -67,9 +72,8 @@ namespace GitHubWin8Phone.ViewModels
 
         private string lineTwo;
         /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding.
+        /// String representation of the activity (Line2)
         /// </summary>
-        /// <returns></returns>
         public string LineTwo
         {
             get
@@ -84,8 +88,11 @@ namespace GitHubWin8Phone.ViewModels
                     NotifyPropertyChanged("LineTwo");
                 }
             }
-        }               
+        }
 
+        /// <summary>
+        /// Property changed event fired when a property of this class changes. Useful for WPF Data Binding
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String propertyName)
         {

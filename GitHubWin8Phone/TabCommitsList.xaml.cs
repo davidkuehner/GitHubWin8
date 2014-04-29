@@ -10,6 +10,9 @@ using Microsoft.Phone.Shell;
 
 namespace GitHubWin8Phone
 {
+    /// <summary>
+    /// Logic related to the commits list UserControl
+    /// </summary>
     public partial class TabCommitsList : UserControl
     {
         public TabCommitsList()
